@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kali Linux Desktop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="desktop">
+        <!-- Desktop Context Menu -->
+        <div class="context-menu">
+            <div class="menu-item"><i class="fas fa-terminal"></i> Open Terminal</div>
+            <div class="menu-item"><i class="fas fa-folder"></i> New Folder</div>
+            <div class="menu-item"><i class="fas fa-file"></i> New File</div>
+            <div class="menu-separator"></div>
+            <div class="menu-item"><i class="fas fa-paste"></i> Paste</div>
+            <div class="menu-separator"></div>
+            <div class="menu-item has-submenu">
+                <i class="fas fa-image"></i> Change Wallpaper
+                <div class="submenu">
+                    <div class="menu-item" data-wallpaper="black-kali.webp">
+                        <i class="fas fa-circle"></i> Black Kali
+                    </div>
+                    <div class="menu-item" data-wallpaper="purple.webp">
+                        <i class="fas fa-circle"></i> Purple Kali
+                    </div>
+                </div>
+            </div>
+            <div class="menu-separator"></div>
+            <div class="menu-item"><i class="fas fa-desktop"></i> Display Settings</div>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="icon" data-type="application">
+                <i class="fas fa-terminal"></i>
+                <span>Terminal</span>
+            </div>
+            <div class="icon" data-type="browser">
+                <i class="fab fa-firefox"></i>
+                <span>Firefox</span>
+            </div>
+            <div class="icon" data-type="folder">
+                <i class="fas fa-folder"></i>
+                <span>Home</span>
+            </div>
+            <div class="icon" data-category="01. Information Gathering">
+                <i class="fas fa-search"></i>
+                <span>Nmap</span>
+            </div>
+            <div class="icon" data-category="02. Vulnerability Analysis">
+                <i class="fas fa-shield-alt"></i>
+                <span>Metasploit</span>
+            </div>
+            <div class="icon" data-category="03. Web Application Analysis">
+                <i class="fas fa-bug"></i>
+                <span>Burp Suite</span>
+            </div>
+            <div class="icon" data-category="04. Network Analysis">
+                <i class="fas fa-wifi"></i>
+                <span>Wireshark</span>
+            </div>
+            <div class="icon" data-category="05. Password Attacks">
+                <i class="fas fa-key"></i>
+                <span>John</span>
+            </div>
+            <div class="icon" data-category="06. Wireless Attacks">
+                <i class="fas fa-broadcast-tower"></i>
+                <span>Aircrack-ng</span>
+            </div>
+            <div class="icon" data-type="places">
+                <i class="fas fa-trash"></i>
+                <span>Trash</span>
+            </div>
+        </div>
+
+        <!-- Terminal Window -->
+        <div class="terminal window" id="terminal">
+            <div class="window-header">
+                <div class="window-buttons">
+                    <span class="button close"></span>
+                    <span class="button minimize"></span>
+                    <span class="button maximize"></span>
+                </div>
+                <div class="window-title">Terminal - root@kali:~</div>
+            </div>
+            <div class="terminal-content">
+                <div class="output"></div>
+                <div class="command-line">
+                    <span class="prompt">root@kali:~#</span>
+                    <input type="text" class="command-input" autofocus>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browser Window -->
+        <div class="browser window" id="browser">
+            <div class="window-header">
+                <div class="window-buttons">
+                    <span class="button close"></span>
+                    <span class="button minimize"></span>
+                    <span class="button maximize"></span>
+                </div>
+                <div class="window-title">Firefox</div>
+            </div>
+            <div class="browser-toolbar">
+                <div class="browser-controls">
+                    <button class="nav-button" id="back"><i class="fas fa-arrow-left"></i></button>
+                    <button class="nav-button" id="forward"><i class="fas fa-arrow-right"></i></button>
+                    <button class="nav-button" id="reload"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="address-bar">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" id="url-input" placeholder="Enter URL or search">
+                </div>
+                <div class="browser-menu">
+                    <button class="menu-button"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+            <div class="browser-content">
+                <iframe id="browser-iframe" src="about:blank" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
+            <div class="browser-tabs">
+                <div class="tab active">
+                    <i class="fas fa-globe"></i>
+                    <span>New Tab</span>
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="new-tab">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="start-menu">
+                <img src="https://www.kali.org/images/kali-dragon-icon.svg" alt="Kali Dragon" class="kali-logo">
+            </div>
+            
+            <!-- Applications Menu -->
+            <div class="applications-menu">
+                <div class="menu-section">
+                    <div class="menu-category">
+                        <i class="fas fa-terminal"></i> Terminal Emulators
+                    </div>
+                    <div class="menu-category">
+                        <i class="fas fa-shield-alt"></i> Information Gathering
+                    </div>
+                    <div class="menu-category">
+                        <i class="fas fa-bug"></i> Vulnerability Analysis
+                    </div>
+                    <div class="menu-category">
+                        <i class="fas fa-globe"></i> Web Application Analysis
+                    </div>
+                    <div class="menu-category">
+                        <i class="fas fa-network-wired"></i> Network Analysis
+                    </div>
+                    <div class="menu-category">
+                        <i class="fas fa-key"></i> Password Attacks
+                    </div>
+                    <div class="menu-category">
+                        <i class="fas fa-wifi"></i> Wireless Attacks
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-category">
+                        <i class="fas fa-cog"></i> System Settings
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-items">
+                <div class="task-item" id="terminal-task">
+                    <i class="fas fa-terminal"></i>
+                    <span>Terminal</span>
+                </div>
+                <div class="task-item" id="browser-task">
+                    <i class="fab fa-firefox"></i>
+                    <span>Firefox</span>
+                </div>
+            </div>
+            
+            <div class="system-tray">
+                <div class="tray-item">
+                    <i class="fas fa-network-wired"></i>
+                    <span class="tooltip">eth0: Connected</span>
+                </div>
+                <div class="tray-item">
+                    <i class="fas fa-wifi"></i>
+                    <span class="tooltip">wlan0: Monitoring</span>
+                </div>
+                <div class="tray-item">
+                    <i class="fas fa-volume-up"></i>
+                    <span class="tooltip">Volume: 100%</span>
+                </div>
+                <div class="tray-item">
+                    <i class="fas fa-battery-full"></i>
+                    <span class="tooltip">Battery: 100%</span>
+                </div>
+                <div class="tray-item">
+                    <span class="time">12:00</span>
+                    <span class="date">2025-11-03</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Dialog -->
+    <div class="settings-dialog window" id="settings-dialog">
+        <div class="window-header">
+            <div class="window-buttons">
+                <span class="button close"></span>
+                <span class="button minimize"></span>
+                <span class="button maximize"></span>
+            </div>
+            <div class="window-title">Settings</div>
+        </div>
+        <div class="settings-content">
+            <div class="settings-sidebar">
+                <div class="settings-nav-item active" data-section="appearance">
+                    <i class="fas fa-paint-brush"></i> Appearance
+                </div>
+                <div class="settings-nav-item" data-section="terminal">
+                    <i class="fas fa-terminal"></i> Terminal
+                </div>
+                <div class="settings-nav-item" data-section="browser">
+                    <i class="fab fa-firefox"></i> Browser
+                </div>
+                <div class="settings-nav-item" data-section="system">
+                    <i class="fas fa-cog"></i> System
+                </div>
+            </div>
+            <div class="settings-sections">
+                <!-- Appearance Settings -->
+                <div class="settings-section active" id="appearance-settings">
+                    <h2>Appearance</h2>
+                    <div class="setting-group">
+                        <h3>Theme</h3>
+                        <div class="setting-item">
+                            <label>Wallpaper</label>
+                            <select id="wallpaper-select">
+                                <option value="black-kali.webp">Black Kali</option>
+                                <option value="purple.webp">Purple Kali</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal Settings -->
+                <div class="settings-section" id="terminal-settings">
+                    <h2>Terminal</h2>
+                    <div class="setting-group">
+                        <h3>Colors</h3>
+                        <div class="setting-item">
+                            <label>Background Color</label>
+                            <input type="color" id="terminal-bg-color">
+                        </div>
+                        <div class="setting-item">
+                            <label>Text Color</label>
+                            <input type="color" id="terminal-text-color">
+                        </div>
+                        <div class="setting-item">
+                            <label>Prompt Color</label>
+                            <input type="color" id="terminal-prompt-color">
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Font</h3>
+                        <div class="setting-item">
+                            <label>Font Size</label>
+                            <input type="number" id="terminal-font-size" min="8" max="32" value="14">
+                        </div>
+                        <div class="setting-item">
+                            <label>Font Family</label>
+                            <select id="terminal-font-family">
+                                <option value="monospace">Monospace</option>
+                                <option value="'Courier New'">Courier New</option>
+                                <option value="'Source Code Pro'">Source Code Pro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Browser Settings -->
+                <div class="settings-section" id="browser-settings">
+                    <h2>Browser</h2>
+                    <div class="setting-group">
+                        <h3>Window</h3>
+                        <div class="setting-item">
+                            <label>Default Width</label>
+                            <input type="text" id="browser-default-width" value="90%">
+                        </div>
+                        <div class="setting-item">
+                            <label>Default Height</label>
+                            <input type="text" id="browser-default-height" value="80vh">
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Homepage</h3>
+                        <div class="setting-item">
+                            <label>Default URL</label>
+                            <input type="url" id="browser-homepage" value="https://www.kali.org">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Settings -->
+                <div class="settings-section" id="system-settings">
+                    <h2>System</h2>
+                    <div class="setting-group">
+                        <h3>Performance</h3>
+                        <div class="setting-item">
+                            <label>Enable Animations</label>
+                            <input type="checkbox" id="enable-animations" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>Enable Transparency</label>
+                            <input type="checkbox" id="enable-transparency" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="settings-footer">
+            <button id="settings-apply" class="btn primary">Apply</button>
+            <button id="settings-save" class="btn">Save</button>
+            <button id="settings-cancel" class="btn">Cancel</button>
+        </div>
+    </div>
+
+    <script src="settings/settings-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
